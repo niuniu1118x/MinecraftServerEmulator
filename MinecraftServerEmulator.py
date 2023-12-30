@@ -3,11 +3,11 @@ import configparser
 import os
 
 def read_config():
-    if not os.path.exists('config.cfg'):
+    if not os.path.exists('server.properties'):
         generate_default_config()
 
     config = configparser.ConfigParser()
-    config.read('config.cfg')
+    config.read('server.properties')
 
     motd_line1 = config.get('ServerConfig', 'motd_line1')
     motd_line2 = config.get('ServerConfig', 'motd_line2')
@@ -22,7 +22,7 @@ motd_line1 = Welcome to My Minecraft Server!
 motd_line2 = Enjoy your stay!
 logo_path = path/to/your/logo.png
 """
-    with open('config.cfg', 'w') as file:
+    with open('server.properties', 'w') as file:
         file.write(default_config)
 
 def send_motd_logo(motd_line1, motd_line2, logo_path, client_socket):
